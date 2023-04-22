@@ -14,9 +14,10 @@ export class ShoppingCart {
   }
 
   total(): number {
-    return +this._items
-      .reduce((total, current) => total + current.price, 0)
-      .toFixed(2);
+    return this._items.reduce((total, current) => total + current.price, 0);
+  }
+  totalWithDiscount(discount: number): number {
+    return +(this.total() - this.total() * discount).toFixed(2);
   }
 
   isEmpty(): boolean {
